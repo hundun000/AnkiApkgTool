@@ -1,0 +1,13 @@
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            // useless for jitpack: groupId = GROUP
+            artifactId = "ankitool-pojo"
+            // useless for jitpack: version = VERSION
+
+            from components.java
+        }
+    }
+}

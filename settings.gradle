@@ -1,2 +1,3 @@
 rootProject.name = 'AnkiApkgTool'
-
+include 'ankitool-core'
+include 'ankitool-service'
