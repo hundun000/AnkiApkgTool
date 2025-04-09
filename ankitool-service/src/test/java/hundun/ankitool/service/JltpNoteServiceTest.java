@@ -10,22 +10,18 @@ import org.junit.Test;
 import java.io.File;
 import java.util.List;
 
-public class ApkgReaderTest {
+public class JltpNoteServiceTest {
 
-    static ObjectMapper objectMapper = new ObjectMapper();
-    static {
-        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-    }
+
 
     @Test
-    public void testFun() throws Exception {
+    public void testJlptNote() throws Exception {
         String apkgPath = "../data/NEW-JLPT__NEW-N5.apkg";
         String outputNoteJson = "../data/NEW-JLPT__NEW-N5.json";
 
-
-        ReadResult readResult = ApkgReader.read(apkgPath);
+        ReadResult readResult = ApkgReader.read(new File(apkgPath));
         List<JlptNote> notes = JltpNoteService.toJlptNodes(readResult);
-        objectMapper.writeValue(new File(outputNoteJson), notes);
+        JltpNoteService.objectMapper.writeValue(new File(outputNoteJson), notes);
         System.out.println("导出成功：" + outputNoteJson);
     }
 

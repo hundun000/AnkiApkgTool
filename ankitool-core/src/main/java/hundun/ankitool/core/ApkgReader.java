@@ -16,11 +16,11 @@ import java.util.zip.ZipInputStream;
 public class ApkgReader {
 
     // 解压 .apkg 文件到临时目录
-    public static File unzipApkg(String zipFilePath) throws IOException {
+    public static File unzipApkg(File zipFile) throws IOException {
         File tempDir = new File(System.getProperty("java.io.tmpdir"), "apkg_" + System.currentTimeMillis());
         tempDir.mkdirs();
 
-        try (ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFilePath))) {
+        try (ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFile))) {
             ZipEntry entry;
             while ((entry = zis.getNextEntry()) != null) {
                 File file = new File(tempDir, entry.getName());
@@ -50,8 +50,8 @@ public class ApkgReader {
     }
 
     // 导出 notes 表中的卡片字段
-    public static ReadResult read(String apkgPath) throws Exception {
-        File tempDir = ApkgReader.unzipApkg(apkgPath);
+    public static ReadResult read(File apkgFile) throws Exception {
+        File tempDir = ApkgReader.unzipApkg(apkgFile);
         File dbFile = null;
         for (String name : new String[]{"collection.anki21b", "collection.anki21", "collection.anki2"}) {
             File f = new File(tempDir, name);
