@@ -224,4 +224,13 @@ public class JapaneseCharacterTool {
         }
         return false;
     }
+
+    public static boolean isAllKana(String text) {
+        for (int i = 0; i < text.length(); i++) {
+            if (!JapaneseCharacterTool.isKana(text.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

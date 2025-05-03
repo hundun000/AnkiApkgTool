@@ -1,5 +1,6 @@
 package hundun.ankitool.service;
 
+import hundun.ankitool.core.util.JapaneseCharacterTool;
 import hundun.ankitool.service.ApkgReader.ReadResult;
 import hundun.ankitool.core.JlptNote;
 import hundun.ankitool.service.GoogleAiService.ConfuseInput;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 public class SlayTheSpireModRunner {
     static String apkgPathFolder = "./data/SlayTheSpireMod/";
     static String jsonFolder = "./data/SlayTheSpireMod/";
-
+    static String v2jsonFolder = "./data/SlayTheSpireMod/v2/";
     boolean withConfuse;
 
     GoogleAiService googleAiService = new GoogleAiService();
@@ -42,19 +43,21 @@ public class SlayTheSpireModRunner {
 
     public static class ConfuseTask {
         public static void main(String[] args) throws Exception {
-            File resultFile = new File(jsonFolder + "N5.json");
+            File resultFile = new File(v2jsonFolder + "N5.json");
             SlayTheSpireModRunner runner = new SlayTheSpireModRunner();
-            runner.confuse(resultFile, 5);
+            runner.confuse(resultFile, GROUP_SIZE, false);
         }
     }
 
-    static final int GROUP_SIZE = 10;
+    static final int GROUP_SIZE = 15;
     public static final int NORMAL_UISTRINGS_INDEX = 0;
     public static final int MEANING_UISTRINGS_INDEX = 1;
     public static final int KANA_UISTRINGS_INDEX = 2;
     public static final int KANJI_UISTRINGS_INDEX = 3;
 
-    public void confuse(File resultFile, Integer limit) throws Exception {
+    public static final String CONFUSED_FURIGANA_KEY = "ConfusedFurigana";
+
+    public void confuse(File resultFile, Integer limit, boolean skipExist) throws Exception {
 
         File step2AskTemplateFile = new File(jsonFolder + "Step2AskTemplate.txt");
         String step2AskTemplate = FileUtils.readAllLines(step2AskTemplateFile).stream().collect(Collectors.joining("\n"));
@@ -66,14 +69,14 @@ public class SlayTheSpireModRunner {
                 JltpNoteService.objectMapper.getTypeFactory().constructMapType(Map.class, String.class, UIStrings.class)
         );
         List<ConfuseInput> standardDictionaryWords = resultMap.entrySet().stream()
-                .filter(it -> it.getValue().getTextDict() == null)
+                .filter(it -> !(skipExist && it.getValue().getTextDict() != null && it.getValue().getTextDict().containsKey(CONFUSED_FURIGANA_KEY)))
                 .filter(it -> !it.getKey().contains("_info"))
                 .map(it -> {
                     String normal = it.getValue().text[NORMAL_UISTRINGS_INDEX];
                     String kana = it.getValue().text[KANA_UISTRINGS_INDEX];
                     String kanji = it.getValue().text[KANJI_UISTRINGS_INDEX];
                     // 有汉字时，需要task生成混淆后的furigana
-                    String confuseInputKana = kanji != null ? kana : null;
+                    String confuseInputKana = JapaneseCharacterTool.hasAnyKanji(normal) ? kana : null;
                     if (confuseInputKana != null) {
                         return ConfuseInput.builder()
                                 .id(it.getKey())
@@ -95,12 +98,19 @@ public class SlayTheSpireModRunner {
             List<ConfuseResult> groupResult = googleAiService.confuse(taskGroup, step2AskTemplate);
             if (groupResult != null) {
                 // 将结果分配回taskGroup
-                for (ConfuseResult confuseResult : groupResult) {
+                for (int i1 = 0; i1 < groupResult.size(); i1++) {
+                    ConfuseResult confuseResult = groupResult.get(i1);
                     UIStrings target = resultMap.get(confuseResult.getId());
                     if (target.getTextDict() == null) {
                         target.setTextDict(new HashMap<>());
                     }
-                    target.getTextDict().put("ConfusedFurigana", confuseResult.getConfusedFurigana().stream().collect(Collectors.joining("|")));
+                    ConfuseInput input = taskGroup.get(i1);
+                    target.getTextDict().put(
+                            CONFUSED_FURIGANA_KEY,
+                            confuseResult.getConfusedFurigana().stream()
+                                    .filter(it -> !it.equals(input.getFurigana()))
+                                    .collect(Collectors.joining("|"))
+                    );
                 }
             } else {
                 log.error("cannot handle taskGroup = {}", taskGroup);

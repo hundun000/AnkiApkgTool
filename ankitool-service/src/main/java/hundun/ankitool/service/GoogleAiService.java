@@ -4,6 +4,7 @@ package hundun.ankitool.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import hundun.ankitool.core.JlptNote;
 import hundun.ankitool.core.StandardDictionaryWord;
+import hundun.ankitool.core.util.JapaneseCharacterTool;
 import hundun.ankitool.service.JltpNoteService.UIStrings;
 import hundun.ankitool.service.remote.GoogleAiFeignClientImpl;
 import hundun.ankitool.service.remote.IGoogleAiFeignClient.GenerateContentResponse;
@@ -63,6 +64,13 @@ public class GoogleAiService {
             //content = content.split("</think>")[1].trim();
             content = content.replace("```json", "").replace("```", "");
             List<ConfuseResult> nodes = JsonUtils.objectMapper.readValue(content, JsonUtils.objectMapper.getTypeFactory().constructCollectionType(List.class, ConfuseResult.class));
+            boolean allKana = nodes.stream()
+                    .flatMap(it -> it.getConfusedFurigana().stream())
+                    .map(it -> it.replace("〜", ""))
+                    .allMatch(it -> JapaneseCharacterTool.isAllKana(it));
+            if (!allKana) {
+                throw new Exception("result not allKana.");
+            }
             List<String> askIds = inputs.stream()
                     .map(it -> it.getId())
                     .collect(Collectors.toList());
@@ -75,7 +83,7 @@ public class GoogleAiService {
             }
             return nodes;
         } catch (Exception e) {
-            log.error("bad aiStep2Group: ", e);
+            log.error("bad confuse: ", e);
         }
         return null;
     }

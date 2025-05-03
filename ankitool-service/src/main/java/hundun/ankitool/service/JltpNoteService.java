@@ -102,7 +102,7 @@ public class JltpNoteService {
             String id = idStart + i;
             UIStrings word = new UIStrings();
             List<String> wordTexts = new ArrayList<>();
-            wordTexts.add(note.getVocabKanji());
+            wordTexts.add(note.getVocabKanji().replaceAll("\\[.*?\\]", ""));
             wordTexts.add(note.getVocabDefCN());
             wordTexts.add(standardDictionaryWord.getVocabFurigana());
             wordTexts.add(Optional.ofNullable(standardDictionaryWord.getVocabKanji()).filter(it -> it.length() > 0).orElse(null));

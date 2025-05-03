@@ -15,7 +15,7 @@ public static class ConfuseInput {
 
 输入的furigana字段表示日语单词的正确假名读音; show字段是日语单词的带汉字的形式。
 
-输出的confusedFurigana表示生成的读音的错误选项。注意是不含汉字的假名读音。数量不超过4个。
+输出的confusedFurigana表示生成的读音的错误选项。注意是不含汉字的假名读音。不要重复，不要和正确答案相同。数量不超过4个。
 
 我的目的是制作日语考题，届时show字段将展示给考生，考生需要在confusedFurigana和正确答案之间选择。
 
