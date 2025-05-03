@@ -1,8 +1,9 @@
-package hundun.ankitool.core;
+package hundun.ankitool.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -45,8 +46,29 @@ public class ApkgReader {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class ReadResult {
-        Map<Long, List<String>> midToFieldNamesMap;
-        Map<Long, List<String>> midToLinesMap;
+
+        Map<Long, ModelResult> modelResultMap;
+
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class ModelResult {
+        Long midId;
+        List<String> fieldNames;
+        List<NoteResult> notes;
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class NoteResult {
+        String id;
+        List<String> fieldValues;
+        List<String> tags;
     }
 
     // 导出 notes 表中的卡片字段
@@ -80,23 +102,28 @@ public class ApkgReader {
             // 2. 使用 Jackson 解析模型 JSON
             ObjectMapper mapper = new ObjectMapper();
             JsonNode modelsNode = mapper.readTree(modelJson);
-            Map<Long, List<String>> modelFields = new HashMap<>();
-            Map<Long, List<String>> midToLineDataMap = new HashMap<>();
+            Map<Long, ModelResult> modelResultMap = new HashMap<>();
 
-            Iterator<Entry<String, JsonNode>> it = modelsNode.fields();
-            while (it.hasNext()) {
-                Map.Entry<String, JsonNode> entry = it.next();
+            Iterator<Entry<String, JsonNode>> iterator = modelsNode.fields();
+            while (iterator.hasNext()) {
+                Map.Entry<String, JsonNode> entry = iterator.next();
                 long modelId = Long.parseLong(entry.getKey());
                 JsonNode fldsNode = entry.getValue().get("flds");
                 List<String> fieldNames = new ArrayList<>();
                 for (JsonNode fieldNode : fldsNode) {
                     fieldNames.add(fieldNode.get("name").asText());
                 }
-                modelFields.put(modelId, fieldNames);
+                modelResultMap.put(modelId,
+                        ModelResult.builder()
+                                .midId(modelId)
+                                .fieldNames(fieldNames)
+                                .notes(new ArrayList<>())
+                                .build()
+                );
             }
 
             // 3. 查询 notes 表，导出字段内容
-            String sql = "SELECT mid, flds FROM notes";
+            String sql = "SELECT mid, flds, tags FROM notes";
             try (
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(sql);
@@ -106,22 +133,28 @@ public class ApkgReader {
                 while (rs.next()) {
                     long mid = rs.getLong("mid");
                     String flds = rs.getString("flds");
+                    String tags = rs.getString("tags"); // Tags 是空格分隔字符串
 
-                    List<String> fieldNames = modelFields.get(mid);
-                    if (fieldNames == null) {
+                    var midResult = modelResultMap.get(mid);
+                    if (midResult == null) {
                         System.err.println("警告：未找到模型 ID " + mid + "，跳过该记录");
                         continue;
                     }
 
-                    if (!midToLineDataMap.containsKey(mid)) {
-                        midToLineDataMap.put(mid, new ArrayList<>());
-                    }
-
-                    midToLineDataMap.get(mid).add(flds);
+                    modelResultMap.get(mid).getNotes().add(
+                            NoteResult.builder()
+                                    .fieldValues(Arrays.asList(flds.split("\u001F")))
+                                    .tags(Optional.ofNullable(tags)
+                                            .filter(it -> it.length() > 0)
+                                            .map(it -> Arrays.asList(it.split(" ")))
+                                            .orElseGet(() -> new ArrayList<>())
+                                    )
+                                    .build()
+                    );
                 }
             }
 
-            return new ReadResult(modelFields, midToLineDataMap);
+            return new ReadResult(modelResultMap);
         }
 
     }
@@ -131,20 +164,20 @@ public class ApkgReader {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))
         ) {
 
-            for (Entry<Long, List<String>> entry : readResult.getMidToLinesMap().entrySet()) {
+            for (var entry : readResult.getModelResultMap().entrySet()) {
                 Long mid = entry.getKey();
-                List<String> lines = entry.getValue();
-                List<String> fieldNames = readResult.getMidToFieldNamesMap().get(mid);
+                ModelResult lines = entry.getValue();
+                List<String> fieldNames = lines.getFieldNames();
                 if (fieldNames == null) {
                     System.err.println("警告：未找到模型 ID " + mid + "，跳过该记录");
                     continue;
                 }
                 writer.write(String.join(",", fieldNames));
                 writer.write("\n");
-                for (String lineData : lines) {
-                    String[] values = lineData.split("\u001F");
+                for (var lineData : lines.getNotes()) {
+                    var values = lineData.getFieldValues();
                     for (int i = 0; i < fieldNames.size(); i++) {
-                        String value = i < values.length ? escapeCsv(values[i]) : "";
+                        String value = i < values.size() ? escapeCsv(values.get(i)) : "";
                         writer.write(value);
                         if (i < fieldNames.size() - 1) {
                             writer.write(",");

@@ -2,11 +2,14 @@ package hundun.ankitool.core;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 对应卡包来源：<a href="https://github.com/5mdld/anki-jlpt-decks">...</a>
  */
 @Data
 public class JlptNote {
+    private List<String> tags;
     /*
     {
       "noteId": "0b463316-2ed7-11ef-a183-99ad05e145f0",
@@ -53,7 +56,9 @@ public class JlptNote {
     // 笔记ID
     private String noteId;
 
-    // 词汇的最常见表示，有可能假名形式比汉字形式更常见则为假名（例如：〜やすい）
+    /**
+     * 词汇的最常见表示，不一定是汉字
+     */
     private String vocabKanji;
 
     // 词汇的发音（音调）
@@ -62,10 +67,15 @@ public class JlptNote {
     // 词汇的词性（例如：接尾）
     private String vocabPoS;
 
-    // 词汇的假名表示
+    /**
+     * 1. 词汇的假名表示；
+     * 2. 外来语的原词，此时假名在vocabKanji
+     */
     private String vocabFurigana;
 
-    // 词汇的其他信息
+    /**
+     * 词汇的其他信息，常为汉字表示
+     */
     private String vocabPlus;
 
     // 词汇的中文定义

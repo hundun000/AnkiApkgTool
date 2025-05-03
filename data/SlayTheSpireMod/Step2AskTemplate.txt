@@ -1,0 +1,22 @@
+数据结构java描述如下：
+
+public static class ConfuseResult {
+    String id;
+    List<String> confusedFurigana;
+}
+
+public static class ConfuseInput {
+    String id;
+    String show;
+    String furigana;
+}
+
+每次我输入一个List<ConfuseInput>，你输出一个List<ConfuseResult>。不要输出json以外的内容，确保json的格式合法。注意检查输出和输入的id完全对应。
+
+输入的furigana字段表示日语单词的正确假名读音; show字段是日语单词的带汉字的形式。
+
+输出的confusedFurigana表示生成的读音的错误选项。注意是不含汉字的假名读音。数量不超过4个。
+
+我的目的是制作日语考题，届时show字段将展示给考生，考生需要在confusedFurigana和正确答案之间选择。
+
+以下是我的输入：

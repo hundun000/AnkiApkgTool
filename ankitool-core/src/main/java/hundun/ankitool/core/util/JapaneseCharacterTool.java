@@ -60,13 +60,8 @@ public class JapaneseCharacterTool {
      * Determines if this character is a Kanji character.
      */
     public static boolean isKanji(char c) {
-        if (('\u4e00' <= c) && (c <= '\u9fa5')) {
-            return true;
-        }
-        if (('\u3005' <= c) && (c <= '\u3007')) {
-            return true;
-        }
-        return false;
+        Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
+        return block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS;
     }
 
     /**
@@ -212,7 +207,16 @@ public class JapaneseCharacterTool {
         return romaji[c - 0x3041];
     }
 
-    public boolean hasKanji(String text) {
+    public static boolean isAllKanji(String text) {
+        for (int i = 0; i < text.length(); i++) {
+            if (!JapaneseCharacterTool.isKanji(text.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean hasAnyKanji(String text) {
         for (int i = 0; i < text.length(); i++) {
             if (JapaneseCharacterTool.isKanji(text.charAt(i))) {
                 return true;

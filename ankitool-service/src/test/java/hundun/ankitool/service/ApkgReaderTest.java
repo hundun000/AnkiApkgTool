@@ -1,8 +1,8 @@
-package hundun.ankitool.core;
+package hundun.ankitool.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import hundun.ankitool.core.ApkgReader.ReadResult;
+import hundun.ankitool.service.ApkgReader.ReadResult;
 import org.junit.Test;
 
 import java.io.File;
