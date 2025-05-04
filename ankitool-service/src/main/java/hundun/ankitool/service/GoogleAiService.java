@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import hundun.ankitool.core.JlptNote;
 import hundun.ankitool.core.StandardDictionaryWord;
 import hundun.ankitool.core.util.JapaneseCharacterTool;
+import hundun.ankitool.core.util.KanaOptionChecker;
 import hundun.ankitool.service.JltpNoteService.UIStrings;
 import hundun.ankitool.service.remote.GoogleAiFeignClientImpl;
 import hundun.ankitool.service.remote.IGoogleAiFeignClient.GenerateContentResponse;
@@ -14,6 +15,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.math3.util.Pair;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -45,11 +47,22 @@ public class GoogleAiService {
     @Builder
     public static class ConfuseInput {
         String id;
+        String show;
         String furigana;
     }
 
+    static final int RETRY = 3;
 
-
+    public @Nullable List<ConfuseResult> confuseWithRetry(List<ConfuseInput> inputs, String step2AskTemplate) {
+        List<ConfuseResult> groupResult = null;
+        int retry = 0;
+        while (groupResult == null && retry < RETRY) {
+            log.info("start aiStep2Group, retry = {}", retry);
+            groupResult = this.confuse(inputs, step2AskTemplate);
+            retry++;
+        }
+        return groupResult;
+    }
 
     public List<ConfuseResult> confuse(List<ConfuseInput> inputs, String step2AskTemplate) {
         String ask;
@@ -63,25 +76,27 @@ public class GoogleAiService {
             String content = chatResult.getCandidates()[0].getContent().getParts()[0].getText();
             //content = content.split("</think>")[1].trim();
             content = content.replace("```json", "").replace("```", "");
-            List<ConfuseResult> nodes = JsonUtils.objectMapper.readValue(content, JsonUtils.objectMapper.getTypeFactory().constructCollectionType(List.class, ConfuseResult.class));
-            boolean allKana = nodes.stream()
+            List<ConfuseResult> results = JsonUtils.objectMapper.readValue(content, JsonUtils.objectMapper.getTypeFactory().constructCollectionType(List.class, ConfuseResult.class));
+            boolean allKana = results.stream()
                     .flatMap(it -> it.getConfusedFurigana().stream())
                     .map(it -> it.replace("〜", ""))
                     .allMatch(it -> JapaneseCharacterTool.isAllKana(it));
             if (!allKana) {
                 throw new Exception("result not allKana.");
             }
-            List<String> askIds = inputs.stream()
-                    .map(it -> it.getId())
-                    .collect(Collectors.toList());
-            List<String> resultIds = nodes.stream()
-                    .map(it -> it.getId())
-                    .collect(Collectors.toList());
-            if (!askIds.equals(resultIds)) {
-                logNotEquals(askIds, resultIds);
+            if (inputs.size() != results.size()) {
+                throw new Exception("result not same size.");
+            }
+            List<Pair<ConfuseInput, ConfuseResult>> inputOutputPairs = new ArrayList<>();
+            for (int i = 0; i < inputs.size(); i++) {
+                inputOutputPairs.add(new Pair<>(inputs.get(i), results.get(i)));
+            }
+            boolean idEquals = inputOutputPairs.stream()
+                    .allMatch(pair ->  pair.getFirst().getId().equals(pair.getSecond().getId()));
+            if (!idEquals) {
                 throw new Exception("id not equals.");
             }
-            return nodes;
+            return results;
         } catch (Exception e) {
             log.error("bad confuse: ", e);
         }

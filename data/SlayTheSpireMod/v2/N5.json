@@ -3,42 +3,42 @@
     "TEXT" : [ "お父さん", "爸爸；父亲", "おとうさん", "お父さん" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "おとおさん|おとうせん|とうさん|おとうたん"
+      "ConfusedFurigana" : "おどうさん|おつうさん|おとおさん|おとさん"
     }
   },
   "CET46:N5_85" : {
     "TEXT" : [ "お母さん", "妈妈，母亲", "おかあさん", "お母さん" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "おかおさん|おかあせん|かあさん|おかあたさん"
+      "ConfusedFurigana" : "おがあさん|おこあさん|おかおさん|おかすさん"
     }
   },
   "CET46:N5_82" : {
     "TEXT" : [ "お手洗い", "洗手间", "おてあらい", "お手洗い" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "おてあれい|おてあだい|てあらい|おてあらいん"
+      "ConfusedFurigana" : "おであらい|おたあらい|おておらい|おてあだい"
     }
   },
   "CET46:N5_83" : {
     "TEXT" : [ "お茶", "茶；工作间隙中的短暂休息", "おちゃ", "お茶" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "おじゃ|ちゃ|おちゅ|おちょ"
+      "ConfusedFurigana" : "おしゃ|おちや|おた"
     }
   },
   "CET46:N5_80" : {
     "TEXT" : [ "お兄さん", "哥哥；对年轻男子的称呼", "おにいさん", "お兄さん" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "おにおさん|おにいせん|にいさん|おにいたん"
+      "ConfusedFurigana" : "おみいさん|おりいさん|おにえさん|おにさん"
     }
   },
   "CET46:N5_81" : {
     "TEXT" : [ "お姉さん", "姐姐；对年轻女子的称呼", "おねえさん", "お姉さん" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "おねおさん|おねえせん|ねえさん|おねえたん"
+      "ConfusedFurigana" : "おめえさん|おれえさん|おねいさん|おねさん"
     }
   },
   "CET46:N5_88" : {
@@ -50,7 +50,7 @@
     "TEXT" : [ "粥", "粥，稀饭", "かゆ", "粥" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "がゆ|かよ|かい|ゆ"
+      "ConfusedFurigana" : "がゆ|こゆ|かよ|かう"
     }
   },
   "CET46:N5_86" : {
@@ -82,7 +82,7 @@
     "TEXT" : [ "昨日", "昨天", "きのう", "昨日" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "きのお|きどう|きのえ|きのい"
+      "ConfusedFurigana" : "きよう|けのう|きのお|きんう"
     }
   },
   "CET46:N5_91" : {
@@ -94,7 +94,7 @@
     "TEXT" : [ "可愛い", "可爱的", "かわいい", "可愛い" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "がわいい|かわい|かわあい|かわいいい"
+      "ConfusedFurigana" : "かあいい|かわい|くわいい|かゆい"
     }
   },
   "CET46:N5_90" : {
@@ -136,7 +136,7 @@
     "TEXT" : [ "ウーロン茶", "乌龙茶", "うーろんちゃ", "烏竜茶" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "うろんちゃ|うーろんじゃ|うーろんちゅ|ぐーろんちゃ"
+      "ConfusedFurigana" : "ううろんちゃ|うーらんちゃ|うーろむちゃ|うーろちゃ"
     }
   },
   "CET46:N5_68" : {
@@ -198,7 +198,7 @@
     "TEXT" : [ "お客さん", "客人，顾客", "おきゃくさん", "お客さん" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "おきゃぐさん|きゃくさん|おきやくさん|おきゃくせん"
+      "ConfusedFurigana" : "おきやくさん|おかくさん|おきゃつさん|おきゃきさん"
     }
   },
   "CET46:N5_77" : {
@@ -210,7 +210,7 @@
     "TEXT" : [ "お菓子", "点心，糕点", "おかし", "お菓子" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "おがし|かし|おかせ|おかち"
+      "ConfusedFurigana" : "おがし|おこし|おかす"
     }
   },
   "CET46:N5_75" : {
@@ -286,9 +286,7 @@
   "CET46:N5_48" : {
     "TEXT" : [ "あれ(代)", "（表示离双方都有距离的）那个；（指之前发生过的，你和对方都熟悉的事情）那时", "あれ", "あれ(代)" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "あり|あで|あろ|あけ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_49" : {
     "TEXT" : [ "いい", "（「よい」的口语形式）好的；可以；合适，足够", "いい", null ],
@@ -314,7 +312,7 @@
     "TEXT" : [ "飴", "糖果；麦芽糖", "あめ", "飴" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "あま|あべ|あみ|あけ"
+      "ConfusedFurigana" : "おめ|かめ|あね|あけ"
     }
   },
   "CET46:N5_42" : {
@@ -431,7 +429,7 @@
     "TEXT" : [ "天ぷら", "天妇罗（一种鱼和蔬菜等裹上面粉后油炸的食物）", "てんぷら", "天麩羅" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "てんぶら|てんふら|てんぷれ|ぷら"
+      "ConfusedFurigana" : "でんぷら|せんぷら|たんぷら|てむぷら"
     }
   },
   "CET46:N5_178" : {
@@ -483,28 +481,28 @@
     "TEXT" : [ "〜番目", "第……号，第……个", "〜ばんめ", "〜番目" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜ぱんめ|〜はんめ|〜ばんえ|〜ばんめい"
+      "ConfusedFurigana" : "〜ぱんめ|〜まんめ|〜ばむめ|〜ばんべ"
     }
   },
   "CET46:N5_27" : {
     "TEXT" : [ "〜匹", "（猫、狗、鸟、鱼、虫等小动物）……只，……条", "〜ひき", "〜匹" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜ぴき|〜びき|〜ひっき|〜ひきい"
+      "ConfusedFurigana" : "〜ぴき|〜びき|〜ひく"
     }
   },
   "CET46:N5_24" : {
     "TEXT" : [ "〜杯", "……杯", "〜はい", "〜杯" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜ぱい|〜ばい|〜はいっ|〜はえ"
+      "ConfusedFurigana" : "〜ぱい|〜ばい|〜はえ"
     }
   },
   "CET46:N5_25" : {
     "TEXT" : [ "〜番", "（表达顺序或序号）……号", "〜ばん", "〜番" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜ぱん|〜はん|〜ばんっ|〜ばんい"
+      "ConfusedFurigana" : "〜ぱん|〜まん|〜ばむ"
     }
   },
   "CET46:N5_22" : {
@@ -516,22 +514,18 @@
     "TEXT" : [ "日", "……号；……天；日本；星期日", "にち", "日" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
-      "ConfusedFurigana" : "にし|につ|にっ|にちい"
+      "ConfusedFurigana" : "みち|りち|にじ|につ"
     }
   },
   "CET46:N5_20" : {
     "TEXT" : [ "中", "正在……；中间，中", "ちゅう", "中" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "ちゅ|ちょう|ちゅうう|ちゅうい"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_21" : {
     "TEXT" : [ "度", "（角度，经纬度，温度等）……度；……次", "ど", "度" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "と|どお|どっ|づ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_169" : {
     "TEXT" : [ "ディズニーランド", "迪士尼乐园", "ディズニーランド", null ],
@@ -551,16 +545,12 @@
   "CET46:N5_28" : {
     "TEXT" : [ "〜分", "……分钟", "〜ふん", "〜分" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜ぷん|〜ぶん|〜ふんっ|〜ふんい"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_29" : {
     "TEXT" : [ "〜本", "（细长物的）……支，把，瓶", "〜ほん", "〜本" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜ぽん|〜ぼん|〜ほんっ|〜ほんい"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_162" : {
     "TEXT" : [ "チーズ", "乳酪，奶酪", "チーズ", null ],
@@ -600,9 +590,7 @@
   "CET46:N5_30" : {
     "TEXT" : [ "〜枚", "……张，……枚", "〜まい", "〜枚" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜まえ|〜まいっ|〜まいえ|〜まいい"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_37" : {
     "TEXT" : [ "あたし", "（女性用语）我", "あたし", null ],
@@ -627,9 +615,7 @@
   "CET46:N5_33" : {
     "TEXT" : [ "ああ(嘆)", "（悲伤、快乐或惊讶时）啊，哎呀；（答应时）啊", "ああ", "ああ(嘆)" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "あ|あい|あう|あお"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_34" : {
     "TEXT" : [ "アイスクリーム", "冰激凌", "アイスクリーム", null ],
@@ -639,16 +625,12 @@
   "CET46:N5_31" : {
     "TEXT" : [ "〜末", "……末，……尾", "〜まつ", "〜末" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜まっ|〜ます|〜まづ|〜まつい"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_32" : {
     "TEXT" : [ "〜様", "（表达敬意）……先生，……女士", "〜さま", "〜様" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜さあ|〜さまあ|〜さまっ|〜さめ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_159" : {
     "TEXT" : [ "タバコ", "烟草，香烟", "タバコ", "煙草" ],
@@ -658,9 +640,7 @@
   "CET46:N5_158" : {
     "TEXT" : [ "ただ今", "刚刚；现在；立刻；（常写作“ただいま”）我回来了", "ただいま", "只今" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "ただいまあ|ただいまい|ただいまえ|ただいまう"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_157" : {
     "TEXT" : [ "だけ", "只，仅", "だけ", null ],
@@ -670,9 +650,7 @@
   "CET46:N5_399" : {
     "TEXT" : [ "五十音", "五十音", "ごじゅうおん", "五十音" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "ごじゅおん|ごじゅううん|ごじゅういん|ごじゅうえん"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_156" : {
     "TEXT" : [ "タクシー", "出租车，的士", "タクシー", null ],
@@ -682,9 +660,7 @@
   "CET46:N5_398" : {
     "TEXT" : [ "五つ", "五个；五岁", "いつつ", "五つ" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "いつち|いつうつ|いっつ|えつつ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_39" : {
     "TEXT" : [ "あっち", "（“あちら”的口语）那边；那个人", "あっち", null ],
@@ -694,121 +670,87 @@
   "CET46:N5_827" : {
     "TEXT" : [ "夕飯", "晚饭", "ゆうはん", "夕飯" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "ゆうばん|ゆうぱん|ゆはん|ようはん"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_826" : {
     "TEXT" : [ "鳴く", "鸣叫，叫", "なく", "鳴く" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "なくす|なぐ|なくう|なくし"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_825" : {
     "TEXT" : [ "無くす", "丢掉；丧失；消灭", "なくす", "無くす" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "なく|なぐす|なくしゅ|なくすう"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_824" : {
     "TEXT" : [ "文章", "文章，作品", "ぶんしょう", "文章" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "ぶんじょう|ふんしょう|ぶんしょ|ぶんしょうう"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_829" : {
     "TEXT" : [ "浴びる", "淋，沐浴；晒，照", "あびる", "浴びる" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "あぴる|あふる|あびうる|あびるう"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_828" : {
     "TEXT" : [ "要る", "需要，必要", "いる", "要る" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "うる|える|いるう|いりる"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_823" : {
     "TEXT" : [ "箱", "箱子，匣子", "はこ", "箱" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "ばこ|ぱこ|はこう|はこお"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_822" : {
     "TEXT" : [ "台所", "厨房", "だいどころ", "台所" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "たいどころ|だいどころう|だいどころお|だいどころる"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_821" : {
     "TEXT" : [ "足", "脚，腿", "あし", "足" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "あじ|あち|あしし|あしう"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_820" : {
     "TEXT" : [ "星", "星星；星号；明星", "ほし", "星" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "ぼし|ぽし|ほじ|ほち"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_15" : {
     "TEXT" : [ "〜時", "……点（钟）；……时候", "〜じ", "〜時" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜ち|〜し|〜じい|〜じゅ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_816" : {
     "TEXT" : [ "勤める", "工作，任职", "つとめる", "勤める" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "つとめるう|つとめるる|つとめるお|つとめるー"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_16" : {
     "TEXT" : [ "〜 人", "……个人；……人", "〜にん", "〜 人" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜じん|〜みん|〜にんん|〜にんう"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_815" : {
     "TEXT" : [ "休み", "休息；假日", "やすみ", "休み" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "やすむ|やすみい|やすみう|やすみー"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_13" : {
     "TEXT" : [ "〜冊", "（用来数笔记本，书本等）……册，……本", "〜さつ", "〜冊" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜たつ|〜さす|〜ざつ|〜しつ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_814" : {
     "TEXT" : [ "良く", "好好地；经常；非常", "よく", "良[よ]く" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "よぐ|こく|やく|ゆく"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_14" : {
     "TEXT" : [ "〜山", "……山", "〜さん", "〜山" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜せん|〜そん|〜ざん|〜たん"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_813" : {
     "TEXT" : [ "やる", "做；（上级给下级，人给动物等）给", "やる", "遣る" ],
@@ -818,51 +760,37 @@
   "CET46:N5_11" : {
     "TEXT" : [ "〜個", "……个，用于数小而圆的物体", "〜こ", "〜個" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜ご|〜く|〜か|〜こん"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_12" : {
     "TEXT" : [ "〜頃", "大概……，……左右", "〜ごろ", "〜頃" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜ごる|〜ころ|〜ごろお|〜ごろく"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_819" : {
     "TEXT" : [ "上着", "外套，上衣", "うわぎ", "上着" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "おわぎ|うばぎ|うわき|うわじ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_818" : {
     "TEXT" : [ "姉", "（自己的）姐姐，嫂子", "あね", "姉" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "あに|おね|かね|あねえ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_10" : {
     "TEXT" : [ "〜君", "（用于同辈或下级男性姓名后）小……，……位", "〜くん", "〜君" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜こん|〜ぐん|〜けん|〜きん"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_817" : {
     "TEXT" : [ "見せる", "给……看，展现", "みせる", "見せる" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "ませる|もせる|みさる|みせろ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_19" : {
     "TEXT" : [ "〜 中", "（附在表示年月、时间、地点的词语后）整整……，整个……", "〜じゅう", "〜 中" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜ちゅう|〜しゅう|〜じゅ|〜じゅー"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_812" : {
     "TEXT" : [ "バター", "黄油", "バター", null ],
@@ -877,9 +805,7 @@
   "CET46:N5_17" : {
     "TEXT" : [ "台", "（家具、汽车、机器等）……台，……辆；台子", "だい", "台" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "たい|がい|だいー|だいっ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_810" : {
     "TEXT" : [ "いかが", "怎样，如何", "いかが", null ],
@@ -889,30 +815,22 @@
   "CET46:N5_18" : {
     "TEXT" : [ "〜達", "……们（人的复数）", "〜たち", "〜達" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "〜だち|〜たし|〜たちい|〜たちゅ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_805" : {
     "TEXT" : [ "六日", "六天；六号", "むいか", "六日" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "もいか|むえか|むいが|むいっか"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_804" : {
     "TEXT" : [ "六つ", "六个；六岁", "むっつ", "六つ" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "むつつ|むつう|むっつう|むっつー"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_803" : {
     "TEXT" : [ "廊下", "走廊", "ろうか", "廊下" ],
     "EXTRA_TEXT" : null,
-    "TEXT_DICT" : {
-      "ConfusedFurigana" : "ろうが|ろおか|ろーか|ろうかっ"
-    }
+    "TEXT_DICT" : null
   },
   "CET46:N5_802" : {
     "TEXT" : [ "練習", "练习，训练", "れんしゅう", "練習" ],

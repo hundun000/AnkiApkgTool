@@ -53,7 +53,7 @@ public class JltpNoteService {
                         .or(() -> Optional.of(note.getVocabKanji())
                                 .filter(it -> JapaneseCharacterTool.hasAnyKanji(it))
                         )
-                        .map(it -> it.replaceAll("\\[.*?\\]$", ""))
+                        .map(it -> it.replaceAll("\\[.*?\\]", ""))
                         .orElse(null)
                 )
                 .vocabDefCN(note.getVocabDefCN())

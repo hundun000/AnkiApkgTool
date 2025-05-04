@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -65,6 +66,7 @@ public class KanjiKanaAligner {
     @NoArgsConstructor
     @Builder
     public static class CharKanaPair {
+        @Nullable
         public Character kanji;
         public String kana;
     }
