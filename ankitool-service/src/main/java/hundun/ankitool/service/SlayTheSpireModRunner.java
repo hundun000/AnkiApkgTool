@@ -15,6 +15,7 @@ import org.apache.commons.math3.util.Pair;
 
 import java.io.File;
 import java.util.*;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -46,7 +47,7 @@ public class SlayTheSpireModRunner {
 
     public static class ConfuseTask {
         public static void main(String[] args) throws Exception {
-            File resultFile = new File(v2jsonFolder + "N5.json");
+            File resultFile = new File(v2jsonFolder + "N1.json");
             SlayTheSpireModRunner runner = new SlayTheSpireModRunner();
             runner.confuse(resultFile, null, true);
             runner.validate(resultFile);
@@ -75,6 +76,8 @@ public class SlayTheSpireModRunner {
                         .map(it -> it.getId())
                         .collect(Collectors.toList());
         log.info("not completed ids = {}", ids);
+        JsonUtils.objectMapper.writeValue(resultFile, confuseContext.getResultMap());
+        log.info("validate file saved");
     }
 
 
@@ -83,6 +86,18 @@ public class SlayTheSpireModRunner {
                 resultFile,
                 JltpNoteService.objectMapper.getTypeFactory().constructMapType(Map.class, String.class, UIStrings.class)
         );
+        LinkedHashMap<String, UIStrings> linkedHashMap = new LinkedHashMap<>();
+        resultMap.entrySet().stream()
+                .sorted((o1, o2) -> {
+                    if (o1.getKey().contains("_info")) {
+                        return -1;
+                    }
+                    if (o2.getKey().contains("_info")) {
+                        return 1;
+                    }
+                    return o1.getKey().compareTo(o2.getKey());
+                })
+                .forEachOrdered(it -> linkedHashMap.put(it.getKey(), it.getValue()));
         List<ConfuseInput> standardDictionaryWords = resultMap.entrySet().stream()
                 .filter(it -> !(skipCompleted && it.getValue().getTextDict() != null && it.getValue().getTextDict().containsKey(CONFUSED_FURIGANA_KEY)))
                 .filter(it -> !it.getKey().contains("_info"))
@@ -106,7 +121,7 @@ public class SlayTheSpireModRunner {
                 .limit(limit != null ? limit : Long.MAX_VALUE)
                 .collect(Collectors.toList());
         return ConfuseContext.builder()
-                .resultMap(resultMap)
+                .resultMap(linkedHashMap)
                 .standardDictionaryWords(standardDictionaryWords)
                 .build();
     }
