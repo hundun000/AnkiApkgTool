@@ -50,7 +50,17 @@ public class SlayTheSpireModRunner {
             File resultFile = new File(v2jsonFolder + "N1.json");
             SlayTheSpireModRunner runner = new SlayTheSpireModRunner();
             runner.confuse(resultFile, null, true);
-            runner.validate(resultFile);
+            runner.validate(resultFile, false);
+        }
+    }
+
+    public static class ValidateTask {
+        public static void main(String[] args) throws Exception {
+            File inputFolder = new File(v2jsonFolder);
+            for (File inputFile : Objects.requireNonNull(inputFolder.listFiles())) {
+                SlayTheSpireModRunner runner = new SlayTheSpireModRunner();
+                runner.validate(inputFile, true);
+            }
         }
     }
 
@@ -70,24 +80,14 @@ public class SlayTheSpireModRunner {
         Map<String, UIStrings> resultMap;
         List<ConfuseInput> standardDictionaryWords;
     }
-    public void validate(File resultFile) throws Exception {
+    public void validate(File resultFile, boolean clearWrongKanji) throws Exception {
         ConfuseContext confuseContext = prepare(resultFile, null, true);
         List<String> ids = confuseContext.getStandardDictionaryWords().stream()
                         .map(it -> it.getId())
                         .collect(Collectors.toList());
         log.info("not completed ids = {}", ids);
-        JsonUtils.objectMapper.writeValue(resultFile, confuseContext.getResultMap());
-        log.info("validate file saved");
-    }
-
-
-    private ConfuseContext prepare(File resultFile, Integer limit, boolean skipCompleted) throws Exception {
-        Map<String, UIStrings> resultMap = JsonUtils.objectMapper.readValue(
-                resultFile,
-                JltpNoteService.objectMapper.getTypeFactory().constructMapType(Map.class, String.class, UIStrings.class)
-        );
         LinkedHashMap<String, UIStrings> linkedHashMap = new LinkedHashMap<>();
-        resultMap.entrySet().stream()
+        confuseContext.getResultMap().entrySet().stream()
                 .sorted((o1, o2) -> {
                     if (o1.getKey().contains("_info")) {
                         return -1;
@@ -97,7 +97,33 @@ public class SlayTheSpireModRunner {
                     }
                     return o1.getKey().compareTo(o2.getKey());
                 })
-                .forEachOrdered(it -> linkedHashMap.put(it.getKey(), it.getValue()));
+                .forEachOrdered(it -> {
+                    if (!it.getKey().contains("_info")) {
+                        if (it.getValue().getText().length <= KANJI_UISTRINGS_INDEX) {
+                            log.warn("TEXT not enough, id = {}", it.getKey());
+                            return;
+                        }
+                        String kanji = it.getValue().getText()[KANJI_UISTRINGS_INDEX];
+                        boolean badKanji = kanji != null && !JapaneseCharacterTool.hasAnyKanji(kanji) && !kanji.contains("|");
+                        if (badKanji) {
+                            log.warn("badKanji, id = {}, kanji = {}", it.getKey(), kanji);
+                            if (clearWrongKanji) {
+                                it.getValue().getText()[KANJI_UISTRINGS_INDEX] = null;
+                            }
+                        }
+                    }
+                    linkedHashMap.put(it.getKey(), it.getValue());
+                });
+        JsonUtils.objectMapper.writeValue(resultFile, linkedHashMap);
+        log.info("validate file saved");
+    }
+
+
+    private ConfuseContext prepare(File resultFile, Integer limit, boolean skipCompleted) throws Exception {
+        Map<String, UIStrings> resultMap = JsonUtils.objectMapper.readValue(
+                resultFile,
+                JltpNoteService.objectMapper.getTypeFactory().constructMapType(Map.class, String.class, UIStrings.class)
+        );
         List<ConfuseInput> standardDictionaryWords = resultMap.entrySet().stream()
                 .filter(it -> !(skipCompleted && it.getValue().getTextDict() != null && it.getValue().getTextDict().containsKey(CONFUSED_FURIGANA_KEY)))
                 .filter(it -> !it.getKey().contains("_info"))
@@ -121,7 +147,7 @@ public class SlayTheSpireModRunner {
                 .limit(limit != null ? limit : Long.MAX_VALUE)
                 .collect(Collectors.toList());
         return ConfuseContext.builder()
-                .resultMap(linkedHashMap)
+                .resultMap(resultMap)
                 .standardDictionaryWords(standardDictionaryWords)
                 .build();
     }

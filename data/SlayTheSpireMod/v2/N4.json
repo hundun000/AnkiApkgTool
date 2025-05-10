@@ -1,9 +1,4 @@
 {
-  "CET46:N4_info" : {
-    "TEXT" : [ "793" ],
-    "EXTRA_TEXT" : null,
-    "TEXT_DICT" : null
-  },
   "CET46:N4_0" : {
     "TEXT" : [ "〜ちゃん", "（“さん”的昵称）小……", "〜ちゃん", null ],
     "EXTRA_TEXT" : null,
@@ -338,7 +333,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N4_155" : {
-    "TEXT" : [ "けれど", "不过，可是", "けれど", "けれども" ],
+    "TEXT" : [ "けれど", "不过，可是", "けれど", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -467,7 +462,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N4_176" : {
-    "TEXT" : [ "シャープペンシル", "自动铅笔", "シャープペンシル", "シャーペン" ],
+    "TEXT" : [ "シャープペンシル", "自动铅笔", "シャープペンシル", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -499,7 +494,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N4_181" : {
-    "TEXT" : [ "スーパーマーケット", "超市", "スーパーマーケット", "スーパー" ],
+    "TEXT" : [ "スーパーマーケット", "超市", "スーパーマーケット", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -686,7 +681,7 @@
     }
   },
   "CET46:N4_212" : {
-    "TEXT" : [ "バスケットボール", "篮球", "バスケットボール", "バスケット｜バスケ" ],
+    "TEXT" : [ "バスケットボール", "篮球", "バスケットボール", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -758,7 +753,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N4_225" : {
-    "TEXT" : [ "ビル", "高楼，大厦", "ビル", "ビルディング" ],
+    "TEXT" : [ "ビル", "高楼，大厦", "ビル", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -1893,7 +1888,7 @@
     }
   },
   "CET46:N4_38" : {
-    "TEXT" : [ "寂しい", "寂寞的，无聊的；荒凉的，冷清的", "さびしい", "さみしい" ],
+    "TEXT" : [ "寂しい", "寂寞的，无聊的；荒凉的，冷清的", "さびしい", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "たびしい|かびしい|さぶしい|さべしい"
@@ -4901,7 +4896,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N4_776" : {
-    "TEXT" : [ "マイク", "麦克风，话筒", "マイク", "マイクロホン" ],
+    "TEXT" : [ "マイク", "麦克风，话筒", "マイク", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -4937,7 +4932,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N4_781" : {
-    "TEXT" : [ "行き", "去；方向", "ゆき", "いき" ],
+    "TEXT" : [ "行き", "去；方向", "ゆき", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "よき|やき|くき|すき"

@@ -1,9 +1,4 @@
 {
-  "CET46:N3_info" : {
-    "TEXT" : [ "1651" ],
-    "EXTRA_TEXT" : null,
-    "TEXT_DICT" : null
-  },
   "CET46:N3_0" : {
     "TEXT" : [ "いや", "不，不是", "いや", null ],
     "EXTRA_TEXT" : null,
@@ -699,7 +694,7 @@
     }
   },
   "CET46:N3_1093" : {
-    "TEXT" : [ "行き先", "目的地，去的地方", "いきさき", "ゆきさき" ],
+    "TEXT" : [ "行き先", "目的地，去的地方", "いきさき", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "こうきさき|いききせん|ゆききさき"
@@ -4766,7 +4761,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N3_1647" : {
-    "TEXT" : [ "リモコン", "遥控器", "リモコン", "リモートコントロール" ],
+    "TEXT" : [ "リモコン", "遥控器", "リモコン", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -5823,7 +5818,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N3_313" : {
-    "TEXT" : [ "コマーシャル", "商业广告", "コマーシャル", "CM" ],
+    "TEXT" : [ "コマーシャル", "商业广告", "コマーシャル", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -6000,7 +5995,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N3_345" : {
-    "TEXT" : [ "ゼミナール", "（大学的）研讨会", "ゼミナール", "ゼミ" ],
+    "TEXT" : [ "ゼミナール", "（大学的）研讨会", "ゼミナール", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -8733,7 +8728,7 @@
     }
   },
   "CET46:N3_73" : {
-    "TEXT" : [ "一昨年", "前年", "いっさくねん", "おととし" ],
+    "TEXT" : [ "一昨年", "前年", "いっさくねん", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "いちさくねん|にっさくねん|いっしゃくねん|いっさくなん"
@@ -10521,12 +10516,12 @@
     "TEXT_DICT" : null
   },
   "CET46:N3_964" : {
-    "TEXT" : [ "ウエイター", "男服务员", "ウエイター", "ウエーター" ],
+    "TEXT" : [ "ウエイター", "男服务员", "ウエイター", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
   "CET46:N3_965" : {
-    "TEXT" : [ "ウエイトレス", "女服务员", "ウエイトレス", "ウエートレス" ],
+    "TEXT" : [ "ウエイトレス", "女服务员", "ウエイトレス", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },

@@ -1,9 +1,4 @@
 {
-  "CET46:N5_info" : {
-    "TEXT" : [ "871" ],
-    "EXTRA_TEXT" : null,
-    "TEXT_DICT" : null
-  },
   "CET46:N5_0" : {
     "TEXT" : [ "〜やすい", "简单的，容易……的", "〜やすい", "〜易い" ],
     "EXTRA_TEXT" : null,
@@ -98,7 +93,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N5_113" : {
-    "TEXT" : [ "コンビニ", "便利店", "コンビニ", "コンビニエンスストア" ],
+    "TEXT" : [ "コンビニ", "便利店", "コンビニ", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -904,7 +899,7 @@
     }
   },
   "CET46:N5_250" : {
-    "TEXT" : [ "ラジカセ", "收录音机", "ラジカセ", "ラジオカセット" ],
+    "TEXT" : [ "ラジカセ", "收录音机", "ラジカセ", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -2870,7 +2865,7 @@
     }
   },
   "CET46:N5_51" : {
-    "TEXT" : [ "イーメール", "电子邮件", "イーメール", "Eメール" ],
+    "TEXT" : [ "イーメール", "电子邮件", "イーメール", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -4096,7 +4091,7 @@
     }
   },
   "CET46:N5_672" : {
-    "TEXT" : [ "二十歳", "二十岁", "はたち", "にじゅっさい" ],
+    "TEXT" : [ "二十歳", "二十岁", "はたち", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "はたちー|はたし|はだち|はたっ"
@@ -4131,7 +4126,7 @@
     }
   },
   "CET46:N5_677" : {
-    "TEXT" : [ "日本", "日本", "にほん", "にっぽん" ],
+    "TEXT" : [ "日本", "日本", "にほん", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "ねほん|のほん|にはん|にへん"
@@ -5483,21 +5478,21 @@
     }
   },
   "CET46:N5_857" : {
-    "TEXT" : [ "四", "四", "よん", "し｜よ" ],
+    "TEXT" : [ "四", "四", "よん", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "し|よっつ|よんつ"
     }
   },
   "CET46:N5_858" : {
-    "TEXT" : [ "七", "七", "なな", "しち" ],
+    "TEXT" : [ "七", "七", "なな", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "しち|ななつ|はな"
     }
   },
   "CET46:N5_859" : {
-    "TEXT" : [ "十", "十", "じゅう", "とお" ],
+    "TEXT" : [ "十", "十", "じゅう", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "しゅう|ちゅう|じゅ"

@@ -1,16 +1,11 @@
 {
-  "CET46:N2_info" : {
-    "TEXT" : [ "2864" ],
-    "EXTRA_TEXT" : null,
-    "TEXT_DICT" : null
-  },
   "CET46:N2_0" : {
     "TEXT" : [ "すばらしい", "出色的，优秀的", "すばらしい", "素晴らしい" ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
   "CET46:N2_1" : {
-    "TEXT" : [ "ずらり", "（人或物）排列状", "ずらり", "ずらっと" ],
+    "TEXT" : [ "ずらり", "（人或物）排列状", "ずらり", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -1161,7 +1156,7 @@
     }
   },
   "CET46:N2_1147" : {
-    "TEXT" : [ "面倒臭い", "非常麻烦的", "めんどうくさい", "めんどくさい" ],
+    "TEXT" : [ "面倒臭い", "非常麻烦的", "めんどうくさい", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "べんどうくさい|めんとうくさい|めんどうしゅうい|めんどうさい"
@@ -3182,7 +3177,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N2_1432" : {
-    "TEXT" : [ "デモ", "游行，示威", "デモ", "デモンストレーション" ],
+    "TEXT" : [ "デモ", "游行，示威", "デモ", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -3259,7 +3254,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N2_1446" : {
-    "TEXT" : [ "プラットホーム", "月台，站台", "プラットホーム", "ホーム" ],
+    "TEXT" : [ "プラットホーム", "月台，站台", "プラットホーム", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -3422,7 +3417,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N2_1474" : {
-    "TEXT" : [ "レインコート", "雨衣", "レインコート", "レーンコート" ],
+    "TEXT" : [ "レインコート", "雨衣", "レインコート", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -7176,7 +7171,7 @@
     }
   },
   "CET46:N2_1959" : {
-    "TEXT" : [ "的確", "准确，恰当", "てきかく", "てっかく" ],
+    "TEXT" : [ "的確", "准确，恰当", "てきかく", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "てきがく|てきかっく|てきいかく|てくかく"
@@ -7538,7 +7533,7 @@
     }
   },
   "CET46:N2_2004" : {
-    "TEXT" : [ "年月", "年月，岁月", "ねんげつ", "としつき" ],
+    "TEXT" : [ "年月", "年月，岁月", "ねんげつ", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "ねんけつ|ねんげつん|ねんげつじ"
@@ -9306,7 +9301,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N2_2235" : {
-    "TEXT" : [ "アポイントメント", "约定", "アポイントメント", "アポイント｜アポ" ],
+    "TEXT" : [ "アポイントメント", "约定", "アポイントメント", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -9430,7 +9425,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N2_2255" : {
-    "TEXT" : [ "ずっしり", "（物体）沉甸甸", "ずっしり", "ずしり" ],
+    "TEXT" : [ "ずっしり", "（物体）沉甸甸", "ずっしり", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : null
   },
@@ -10194,14 +10189,14 @@
     }
   },
   "CET46:N2_2363" : {
-    "TEXT" : [ "行き過ぎる", "经过；走过头；超出限度", "ゆきすぎる", "いきすぎる" ],
+    "TEXT" : [ "行き過ぎる", "经过；走过头；超出限度", "ゆきすぎる", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "よきすぎる|やきすぎる"
     }
   },
   "CET46:N2_2364" : {
-    "TEXT" : [ "行く先", "目的地，去向；未来", "ゆくさき", "いくさき" ],
+    "TEXT" : [ "行く先", "目的地，去向；未来", "ゆくさき", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "よくさき|やくさき|ゆくしき|ゆくざき"
@@ -12596,7 +12591,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N2_2695" : {
-    "TEXT" : [ "レトルト食品", "真空包装食品；即食食品", "れとるとしょくひん", "retort" ],
+    "TEXT" : [ "レトルト食品", "真空包装食品；即食食品", "れとるとしょくひん", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "れとるとしょくじ|れとるとしょくりょう|れとるとしょくば|れとるとしょくひ"
@@ -17250,7 +17245,7 @@
     }
   },
   "CET46:N2_735" : {
-    "TEXT" : [ "背負う", "背；担负", "せおう", "しょう" ],
+    "TEXT" : [ "背負う", "背；担负", "せおう", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "せよう|せいおう|しょうおう"
@@ -18180,7 +18175,7 @@
     "TEXT_DICT" : null
   },
   "CET46:N2_858" : {
-    "TEXT" : [ "仕様がない", "毫无办法", "しようがない", "しょうがない" ],
+    "TEXT" : [ "仕様がない", "毫无办法", "しようがない", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "しよおがない|しよううがない|しよがない|しよおんがない"
@@ -18930,7 +18925,7 @@
     }
   },
   "CET46:N2_959" : {
-    "TEXT" : [ "三角形", "三角形", "さんかくけい", "さんかっけい" ],
+    "TEXT" : [ "三角形", "三角形", "さんかくけい", null ],
     "EXTRA_TEXT" : null,
     "TEXT_DICT" : {
       "ConfusedFurigana" : "さんかくぎょう|さんかっけい|さんかくがた|さんかくしき"
