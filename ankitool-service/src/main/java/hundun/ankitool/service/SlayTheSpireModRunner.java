@@ -88,15 +88,13 @@ public class SlayTheSpireModRunner {
         log.info("not completed ids = {}", ids);
         LinkedHashMap<String, UIStrings> linkedHashMap = new LinkedHashMap<>();
         confuseContext.getResultMap().entrySet().stream()
-                .sorted((o1, o2) -> {
-                    if (o1.getKey().contains("_info")) {
-                        return -1;
+                .sorted(Comparator.comparingInt(it -> {
+                    try {
+                        return Integer.parseInt(it.getKey().split("_")[1]);
+                    } catch (Exception e) {
+                        return Integer.MIN_VALUE; // 非数字排最前
                     }
-                    if (o2.getKey().contains("_info")) {
-                        return 1;
-                    }
-                    return o1.getKey().compareTo(o2.getKey());
-                })
+                }))
                 .forEachOrdered(it -> {
                     if (!it.getKey().contains("_info")) {
                         if (it.getValue().getText().length <= KANJI_UISTRINGS_INDEX) {
