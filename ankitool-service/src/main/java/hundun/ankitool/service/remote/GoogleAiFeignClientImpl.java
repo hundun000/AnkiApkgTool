@@ -18,7 +18,11 @@ public class GoogleAiFeignClientImpl {
     String key;
     //String model = "gemini-2.0-flash";
     String model = "gemini-2.5-flash-preview-04-17";
-    float temperature = 0.2f;
+    /**
+     * 好的，如果输出的 List<ConfuseResult> 里包含生成的错误答案，并且这部分需要有一定的创作性来生成 * plausible* 但 incorrect 的选项，那么适合使用一个 中等偏高 的 temperature。
+     * 例如，0.5 到 0.8 之间的 temperature 比较合适。
+     */
+    float temperature = 0.6f;
     public GoogleAiFeignClientImpl() {
         googleAiFeignClient = IGoogleAiFeignClient.instance();
         this.key = SecretConfig.googleKey;

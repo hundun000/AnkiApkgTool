@@ -14,7 +14,7 @@ public interface IGoogleAiFeignClient {
     public static IGoogleAiFeignClient instance() {
         return FeignClientFactory
                 .getBaseBuilder()
-                .options(new Request.Options(1, TimeUnit.SECONDS, 300, TimeUnit.SECONDS, true))
+                .options(new Request.Options(1, TimeUnit.SECONDS, 600, TimeUnit.SECONDS, true))
                 .target(IGoogleAiFeignClient.class, "https://generativelanguage.googleapis.com");
     }
 

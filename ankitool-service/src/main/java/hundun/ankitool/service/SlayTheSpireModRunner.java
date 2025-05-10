@@ -9,6 +9,7 @@ import hundun.ankitool.service.GoogleAiService.ConfuseResult;
 import hundun.ankitool.service.JltpNoteService.UIStrings;
 import hundun.ankitool.service.util.FileUtils;
 import hundun.ankitool.service.util.JsonUtils;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.math3.util.Pair;
 
@@ -47,11 +48,13 @@ public class SlayTheSpireModRunner {
         public static void main(String[] args) throws Exception {
             File resultFile = new File(v2jsonFolder + "N5.json");
             SlayTheSpireModRunner runner = new SlayTheSpireModRunner();
-            runner.confuse(resultFile, GROUP_SIZE, false);
+            runner.confuse(resultFile, null, true);
+            runner.validate(resultFile);
         }
     }
 
     static final int GROUP_SIZE = 20;
+    static final int RESULT_CHECK_MIN_SIZE = 2;
     public static final int SHOW_UISTRINGS_INDEX = 0;
     public static final int MEANING_UISTRINGS_INDEX = 1;
     public static final int KANA_UISTRINGS_INDEX = 2;
@@ -59,19 +62,29 @@ public class SlayTheSpireModRunner {
 
     public static final String CONFUSED_FURIGANA_KEY = "ConfusedFurigana";
 
-    public void confuse(File resultFile, Integer limit, boolean skipExist) throws Exception {
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class ConfuseContext {
+        Map<String, UIStrings> resultMap;
+        List<ConfuseInput> standardDictionaryWords;
+    }
+    public void validate(File resultFile) throws Exception {
+        ConfuseContext confuseContext = prepare(resultFile, null, true);
+        List<String> ids = confuseContext.getStandardDictionaryWords().stream()
+                        .map(it -> it.getId())
+                        .collect(Collectors.toList());
+        log.info("not completed ids = {}", ids);
+    }
 
-        File step2AskTemplateFile = new File(jsonFolder + "Step2AskTemplate.txt");
-        String step2AskTemplate = FileUtils.readAllLines(step2AskTemplateFile).stream().collect(Collectors.joining("\n"));
 
-
-
+    private ConfuseContext prepare(File resultFile, Integer limit, boolean skipCompleted) throws Exception {
         Map<String, UIStrings> resultMap = JsonUtils.objectMapper.readValue(
                 resultFile,
                 JltpNoteService.objectMapper.getTypeFactory().constructMapType(Map.class, String.class, UIStrings.class)
         );
         List<ConfuseInput> standardDictionaryWords = resultMap.entrySet().stream()
-                .filter(it -> !(skipExist && it.getValue().getTextDict() != null && it.getValue().getTextDict().containsKey(CONFUSED_FURIGANA_KEY)))
+                .filter(it -> !(skipCompleted && it.getValue().getTextDict() != null && it.getValue().getTextDict().containsKey(CONFUSED_FURIGANA_KEY)))
                 .filter(it -> !it.getKey().contains("_info"))
                 .map(it -> {
                     String show = it.getValue().text[SHOW_UISTRINGS_INDEX];
@@ -92,6 +105,23 @@ public class SlayTheSpireModRunner {
                 .filter(it -> it != null)
                 .limit(limit != null ? limit : Long.MAX_VALUE)
                 .collect(Collectors.toList());
+        return ConfuseContext.builder()
+                .resultMap(resultMap)
+                .standardDictionaryWords(standardDictionaryWords)
+                .build();
+    }
+
+
+    public void confuse(File resultFile, Integer limit, boolean skipCompleted) throws Exception {
+
+        File step2AskTemplateFile = new File(jsonFolder + "Step2AskTemplate.txt");
+        String step2AskTemplate = FileUtils.readAllLines(step2AskTemplateFile).stream().collect(Collectors.joining("\n"));
+
+        ConfuseContext confuseContext = prepare(resultFile, limit, skipCompleted);
+
+        final Map<String, UIStrings> resultMap = confuseContext.getResultMap();
+        final List<ConfuseInput> standardDictionaryWords = confuseContext.getStandardDictionaryWords();
+
         log.info("total size = {}", standardDictionaryWords.size());
         List<List<ConfuseInput>> taskGroups = splitAiTaskGroups(standardDictionaryWords);
 
@@ -109,7 +139,7 @@ public class SlayTheSpireModRunner {
                     ConfuseInput input = taskGroup.get(i1);
                     confuseResult.getConfusedFurigana()
                                     .removeIf(it -> !KanaOptionChecker.isReasonable(input.getShow(),it));
-                    if (confuseResult.getConfusedFurigana().size() <= 2) {
+                    if (confuseResult.getConfusedFurigana().size() < RESULT_CHECK_MIN_SIZE) {
                         log.warn("result not enough, skip。confuseResult= {}", confuseResult);
                         continue;
                     }
@@ -140,7 +170,9 @@ public class SlayTheSpireModRunner {
             inputs = inputs.subList(GROUP_SIZE, inputs.size());
             result.add(sub);
         }
-        result.add(inputs);
+        if (!inputs.isEmpty()) {
+            result.add(inputs);
+        }
         return result;
     }
 }

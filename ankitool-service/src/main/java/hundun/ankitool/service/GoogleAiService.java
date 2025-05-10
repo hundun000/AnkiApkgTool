@@ -69,14 +69,25 @@ public class GoogleAiService {
         try {
             ask = step2AskTemplate + "\n" + JsonUtils.objectMapper.writeValueAsString(inputs);
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            log.error("bad inputs to ask: ", e);
+            return null;
         }
         try {
             GenerateContentResponse chatResult = feignClient.singleAsk(ask);
+            if (chatResult.getCandidates()[0].getFinishReason().equals("MAX_TOKENS")) {
+                log.warn("MAX_TOKENS happened, chatResult = {}, ask = {}", chatResult, ask);
+                return null;
+            }
             String content = chatResult.getCandidates()[0].getContent().getParts()[0].getText();
             //content = content.split("</think>")[1].trim();
             content = content.replace("```json", "").replace("```", "");
-            List<ConfuseResult> results = JsonUtils.objectMapper.readValue(content, JsonUtils.objectMapper.getTypeFactory().constructCollectionType(List.class, ConfuseResult.class));
+            List<ConfuseResult> results;
+            try {
+                results = JsonUtils.objectMapper.readValue(content, JsonUtils.objectMapper.getTypeFactory().constructCollectionType(List.class, ConfuseResult.class));
+            } catch (JsonProcessingException e) {
+                log.error("JsonProcessingException by chatResult = {}", chatResult);
+                throw e;
+            }
             boolean allKana = results.stream()
                     .flatMap(it -> it.getConfusedFurigana().stream())
                     .map(it -> it.replace("〜", ""))

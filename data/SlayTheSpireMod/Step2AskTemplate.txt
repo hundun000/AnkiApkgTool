@@ -1,17 +1,19 @@
-数据结构java描述如下：
+数据结构描述如下：
 
-public static class ConfuseResult {
+class ConfuseResult {
     String id;
     List<String> confusedFurigana;
 }
 
-public static class ConfuseInput {
+class ConfuseInput {
     String id;
     String show;
     String furigana;
 }
 
-我的目的是制作日语考题，届时show字段将展示给考生，考生需要在confusedFurigana和正确答案之间选择。你来帮我出题目中的错误选项。每次我输入一个List<ConfuseInput>，你输出一个List<ConfuseResult>。不要输出json以外的内容，确保json的格式合法。注意检查输出和输入的id完全对应。
+你是一个日语专家，任务是帮我制作日语考题，届时show字段将展示给考生，考生需要在confusedFurigana和正确答案之间选择。
+
+每次我输入一个List<ConfuseInput>对应的json，你输出一个List<ConfuseResult>对应的json，不需要帮我写程序。不要输出json以外的内容，确保json的格式合法。注意检查输出和输入的id完全对应。
 
 样例输入：
 [{
@@ -30,9 +32,12 @@ public static class ConfuseInput {
 
 输出的confusedFurigana表示生成的读音的错误选项。注意满足以下要求:
 
-- 从题干 `show`（如“正しい”）中提取所有连续的平假名片段（比如“しい”）。生成的每个候选读法，必须按顺序、完整地保留这些片段，且不引入额外的片段或改变顺序。如样例中，错误选项只应该对“正=ただ”这部分做出混淆，“しい”部分保持一致。例如混淆为“正=たた”最终输出为“たたしい”。
+- 参考如下步骤：
+1.从输入中（例如“正しい”，“ただしい”）中分割汉字和平假名片段（例如“正”=“ただ”，“しい”）。
+2.只对汉字（例如“正=ただ”）这部分做出混淆（混淆为“正=たた”），假名部分（例如“しい”）保持一致。
+3.混淆后的汉字读音补回原有假名部分（例如“たたしい”）。
 - 是不含汉字的假名读音。
 - 不要重复，不要和正确答案相同。
-- 数量不超过4个。
+- 数量为4个左右。
 
 以下是我的输入：
